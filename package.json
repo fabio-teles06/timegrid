@@ -1,0 +1,18 @@
+{
+  "name": "timegrid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "fabio-teles06",
+  "license": "ISC",
+  "repository": {
+    "url": "https://github.com/fabio-teles06/timegrid"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
