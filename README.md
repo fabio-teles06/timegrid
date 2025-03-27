@@ -11,12 +11,10 @@ O formato da resposta dessa API é:
 
     [
 	    {
+			id: string
 		    nome: string,
 		    local: string,
 		    data_hora: Date,
-		    description: string,
-		    custom_properties: [
-			    {name: "a", value: "b"}
-		    ]
+		    details: string
 	    }
     ]
