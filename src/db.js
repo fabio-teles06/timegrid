@@ -1,6 +1,14 @@
-import { PrismaClient } from "@prisma/client/edge";
-import { withAccelerate } from "@prisma/extension-accelerate";
+const { PrismaClient } = require("@prisma/client/edge");
+const { withAccelerate } = require("@prisma/extension-accelerate");
 
 const prisma = new PrismaClient().$extends(withAccelerate());
 
-export default prisma;
+module.exports = {
+    prisma,
+    connect: () =>{
+        prisma.$connect();
+    },
+    disconnect: () =>{
+        prisma.$disconnect();
+    }
+}
