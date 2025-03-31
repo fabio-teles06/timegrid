@@ -34,8 +34,10 @@ route.post('/register', async (req, res) => {
         });
         return res.status(201).json({ token });
     } catch (error) {
-        console.error(error);
-        return res.status(500).json({ error: 'Internal server error' });
+        if (error.code === 'P2002') {
+            return res.status(409).json({ error: 'User already exists' });
+        }
+        return res.status(500).json({ error: 'Internal server error' }); //Falta um teste
     }
 });
 route.post('/login', async (req, res) => {
@@ -56,8 +58,7 @@ route.post('/login', async (req, res) => {
         });
         return res.status(200).json({ token });
     } catch (error) {
-        console.error(error);
-        return res.status(500).json({ error: 'Internal server error' });
+        return res.status(500).json({ error: 'Internal server error' }); // Falta um teste
     }
 });
 
