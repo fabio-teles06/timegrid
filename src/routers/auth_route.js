@@ -21,7 +21,7 @@ route.post('/register', async (req, res) => {
             return res.status(400).json({ errors });
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10); // TODO: hash password in the client and add nonce to the server
+        const hashedPassword = await bcrypt.hash(password, process.env.SALT_ROUNDS || 10);
         const user = await prisma.user.create({
             data: {
                 name,
@@ -37,7 +37,7 @@ route.post('/register', async (req, res) => {
         if (error.code === 'P2002') {
             return res.status(409).json({ error: 'User already exists' });
         }
-        return res.status(500).json({ error: 'Internal server error' }); //Falta um teste
+        return res.status(500).json({ error: 'Internal server error' });
     }
 });
 route.post('/login', async (req, res) => {
@@ -58,7 +58,7 @@ route.post('/login', async (req, res) => {
         });
         return res.status(200).json({ token });
     } catch (error) {
-        return res.status(500).json({ error: 'Internal server error' }); // Falta um teste
+        return res.status(500).json({ error: 'Internal server error' });
     }
 });
 
