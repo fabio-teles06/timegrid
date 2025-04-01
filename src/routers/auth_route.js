@@ -1,5 +1,5 @@
 const route = require('express').Router();
-const prisma = require('../db');
+const prisma = require('../database');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const userValidator = require('../validators/user_validator');

@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken';
-const env = require('dotenv');
 
 module.exports = (req, res, next) => {
     const token = req.headers['authorization'];
