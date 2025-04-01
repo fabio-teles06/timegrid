@@ -1,0 +1,1 @@
+jest.mock('./src/db', () => require('./src/__mocks__/prisma'));

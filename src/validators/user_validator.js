@@ -11,7 +11,7 @@ module.exports = {
         if (typeof email !== 'string') {
             return false;
         }
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return regex.test(email);
     },
     //password 12 characters long, at least one uppercase letter, one lowercase letter, one number and one special character

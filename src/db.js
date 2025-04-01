@@ -3,12 +3,4 @@ const { withAccelerate } = require("@prisma/extension-accelerate");
 
 const prisma = new PrismaClient().$extends(withAccelerate());
 
-module.exports = {
-    prisma,
-    connect: () =>{
-        prisma.$connect();
-    },
-    disconnect: () =>{
-        prisma.$disconnect();
-    }
-}
+module.exports = prisma;

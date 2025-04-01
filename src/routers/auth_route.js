@@ -1,5 +1,5 @@
 const route = require('express').Router();
-const { prisma } = require('../db');
+const prisma = require('../db');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const userValidator = require('../validators/user_validator');
@@ -59,26 +59,6 @@ route.post('/login', async (req, res) => {
         return res.status(200).json({ token });
     } catch (error) {
         return res.status(500).json({ error: 'Internal server error' }); // Falta um teste
-    }
-});
-
-route.get('/me', async (req, res) => {
-    try {
-        const token = req.headers['authorization']?.split(' ')[1];
-        if (!token) {
-            return res.status(401).json({ error: 'Unauthorized' });
-        }
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        const user = await prisma.user.findUnique({
-            where: { id: decoded.id },
-        });
-        if (!user) {
-            return res.status(401).json({ error: 'Unauthorized' });
-        }
-        return res.status(200).json(user);
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ error: 'Internal server error' });
     }
 });
 
